@@ -1,0 +1,57 @@
+/* styles.css */
+
+/* Styles généraux */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Styles pour l'en-tête */
+header {
+    text-align: center;
+    position: relative;
+}
+
+.logo-container {
+    position: relative;
+}
+
+/* Image du logo */
+.logo-container img {
+    width: 60%;
+    height: auto;
+    margin: 10px auto;
+    display: block;
+}
+
+/* Bandeau noir après le logo */
+.bandeau-noir {
+    background-color: #000;
+    color: #fff;
+    width: 100%;
+    padding: 0px; /* Ajustement de la hauteur du bandeau */
+    text-align: center;
+    position: relative;
+    top: -25px; /* Décalage du bandeau vers le haut */
+}
+
+/* Styles pour le diaporama */
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.mySlides {
+    display: none;
+    position: absolute;
+    width: 100%;
+    animation: fadeEffect 1.5s ease-in-out;
+}
+
+@keyframes fadeEffect {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
