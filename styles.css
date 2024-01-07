@@ -1,57 +1,141 @@
-/* styles.css */
-
 /* Styles généraux */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+	background-color:white;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centre le contenu horizontalement */
 }
 
-/* Styles pour l'en-tête */
-header {
-    text-align: center;
-    position: relative;
-}
-
+/* Style pour le conteneur du logo et de l'autre image */
 .logo-container {
-    position: relative;
+	background-color: white;
+  display: flex; /* Affichage en ligne des éléments */
+  align-items: center; /* Centre les éléments verticalement */
+  justify-content: center; /* Centre les éléments horizontalement */
+  max-height: 450px;
 }
 
-/* Image du logo */
-.logo-container img {
-    width: 60%;
-    height: auto;
-    margin: 10px auto;
-    display: block;
+/* Style pour le logo */
+.logo {
+  width: 30%; /* Occupe 40% de la largeur du conteneur */
+  height: auto; /* Ajuste la hauteur automatiquement pour préserver les proportions */
+  margin-top: 0px; /* Espacement entre le logo et l'autre image */
+  margin-left: 0px;
 }
 
-/* Bandeau noir après le logo */
-.bandeau-noir {
-    background-color: #000;
-    color: #fff;
-    width: 100%;
-    padding: 0px; /* Ajustement de la hauteur du bandeau */
-    text-align: center;
-    position: relative;
-    top: -25px; /* Décalage du bandeau vers le haut */
+/* Style pour le bandeau noir */
+.bande-noire {
+  background-color: black;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 2vw; /* Taille de la police en fonction de la largeur de l'écran */
+  width: 100vw; /* Occupe toute la largeur de l'écran */
+  padding: 0.1vw; /* Espacement intérieur réduit */
+  margin: 0; /* Réinitialisation des marges */
+  box-sizing: border-box; /* Garde la largeur réelle incluant le padding */
+  line-height: 0.1; /* Hauteur de ligne pour correspondre à la taille de la police */
+    z-index:99;
+margin-bottom: 2vw;
 }
 
-/* Styles pour le diaporama */
-.slideshow-container {
-    position: relative;
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
+.annonce {
+  background-image: url('TACT Titre.gif'); /* Image pour la div annonce */
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw; /* Occupe toute la largeur de l'écran */
+  height: 40vw;
+  position: relative;
+  top: -3px;
+  z-index:70;
 }
 
-.mySlides {
-    display: none;
-    position: absolute;
-    width: 100%;
-    animation: fadeEffect 1.5s ease-in-out;
+.annonce2 {
+  background-image: url('image2.png'); /* Image pour la div annonce */
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw; /* Occupe toute la largeur de l'écran */
+  height: 40vw;
+  position: relative;
+    top: -1px;
+}
+.svg2 {
+      margin-top: -71vw;
+    }
+
+/* Styles pour le cercle */
+.cercle1 {
+  background-color: white;
+  position: absolute;
+  width: 27vw; /* Diamètre du cercle */
+  height: 6vw; /* Diamètre du cercle */
+  border-radius: 3vw;
+  padding: -10px 0; /* Espacement intérieur réduit */
+  margin: 0; /* Réinitialisation des marges */
+  margin-top: 15vw;
+  margin-left: 6vw;
+  animation: zoomInOut 3s ease-in-out infinite; /* Appliquer l'animation */
+  z-index: 90;
 }
 
-@keyframes fadeEffect {
-    from { opacity: 0; }
-    to { opacity: 1; }
+/* Ajout de l'animation pour le cercle */
+@keyframes zoomInOut {
+  0% {
+    transform: scale(0.85); /* Taille normale */
+  }
+  50% {
+    transform: scale(1); /* Zoom */
+  }
+  100% {
+    transform: scale(0.85); /* Retour à la taille normale */
+  }
 }
+
+.aureole1 {
+  background-color: white;
+  position: absolute;
+  width: 24vw; /* Diamètre du cercle */
+  height: 8vw; /* Diamètre du cercle */
+  border-radius: 3vw;
+  padding: -10px 0; /* Espacement intérieur réduit */
+  margin: 0; /* Réinitialisation des marges */
+  margin-top: 14vw;
+  margin-left: 7vw;
+  animation: aureoleAnim 3s ease-in-out infinite; /* Appliquer l'animation */
+  z-index:88;
+}
+
+.aureole2 {
+  background-color: white;
+  position: absolute;
+  width: 27vw; /* Diamètre du cercle */
+  height: 9vw; /* Diamètre du cercle */
+  border-radius: 3vw;
+  padding: -10px 0; /* Espacement intérieur réduit */
+  margin: 0; /* Réinitialisation des marges */
+  margin-top: 14vw;
+  margin-left: 6vw;
+  animation: aureoleAnim 3s ease-in-out infinite; /* Appliquer l'animation */
+  z-index:89;
+}
+
+/* Animation pour les auréoles */
+@keyframes aureoleAnim {
+	0%{
+		opacity: 0;
+	}
+  30% {
+    opacity: 0; /* Démarre avec une opacité de 0 */
+    transform: scale(0.9); /* Taille normale au début */
+  }
+  70% {
+    opacity: 0.4; /* Augmente l'opacité à mi-chemin */
+    transform: scale(1.05); /* Zoom à mi-chemin */
+  }
+  100% {
+    opacity: 0; /* Retour à une opacité de 0 à la fin */
+    transform: scale(1.1); /* Dézoom à la fin */
+  }
