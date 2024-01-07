@@ -1,59 +1,70 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Votre Site Web</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Liaison au fichier CSS -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Titre de la page</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <!-- GIF comme bandeau -->
-        <div class="logo-container">
-            <img src="bandeau_logo.gif" alt="Bandeau logo">
-            <div class="bandeau-noir">
-                <p>Créateur de jeux de société originaux</p>
-            </div>
-        </div>
-    </header>
 
-    <main>
-          <!-- Diaporama -->
-        <div class="slideshow-container">
-            <div class="mySlides fade">
-                <img src="image1.png" style="width:100%">
-            </div>
-
-            <div class="mySlides fade">
-                <img src="image2.png" style="width:100%">
-            </div>
-
-            <div class="mySlides fade">
-                <img src="image3.png" style="width:100%">
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <!-- Contenu du pied de page -->
-        <p>© 2024 Mon Site Web</p>
-    </footer>
+  <header>
+    <div class="logo-container">
+      <img src="bandeau_logo.gif" alt="Logo" class="logo">
+	  </div>
+    <div class="bande-noire">
+      <p>Créateur de jeux de société originaux</p>
+    </div>
 	
-		    <script>
-        let slideIndex = 0;
-        showSlides();
+	        <div class="cercle1"> </div>
+	<div class="aureole1"> 	  </div>
+	<div class="aureole2">	  </div>
 
-        function showSlides() {
-            let slides = document.getElementsByClassName("mySlides");
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) { slideIndex = 1; }
-            slides[slideIndex - 1].style.display = "block";
-            setTimeout(showSlides, 3000); // Change l'image toutes les 3 secondes (3000 millisecondes)
-        }
-    </script>
-	
+  </header>
+ 
+<div class="annonce">
+<svg viewBox="0 0 1000 200" xmlns="http://www.w3.org/2000/svg" width="100%" height=84.5vw>
+  <!-- Première vague -->
+<path fill="#FFFFFF" d="M 0 100 Q 125 120 250 100 T 500 100 T 750 100 T 1000 100 V 110 H 0 Z">
+    <animate
+      attributeName="d"
+      dur="5s"
+      repeatCount="indefinite"
+      values="
+        M 0 100 Q 125 80 250 100 T 500 100 T 750 100 T 1000 100 V 80 H 0 Z;
+        M 0 100 Q 125 120 250 100 T 500 100 T 750 100 T 1000 100 V 80 H 0 Z;
+        M 0 100 Q 125 80 250 100 T 500 100 T 750 100 T 1000 100 V 80 H 0 Z;
+      "
+    />
+  </path>  
+</svg>
+<div class="svg2">
+<svg viewBox="0 0 1000 200" xmlns="http://www.w3.org/2000/svg" width="100%" height=49.5vw >
+  <!-- Première vague -->
+<path fill="#FFFFFF" d="M 0 100 Q 125 120 250 100 T 500 100 T 750 100 T 1000 100 V 110 H 0 Z">
+    <animate
+      attributeName="d"
+      dur="5s"
+      repeatCount="indefinite"
+      values="
+        M 0 100 Q 125 80 250 100 T 500 100 T 750 100 T 1000 100 V 120 H 0 Z;
+        M 0 100 Q 125 120 250 100 T 500 100 T 750 100 T 1000 100 V 120 H 0 Z;
+        M 0 100 Q 125 80 250 100 T 500 100 T 750 100 T 1000 100 V 120 H 0 Z;
+      "
+    />
+  </path>  
+</svg>
+</div>
+</div>
+
+<div class="annonce2">
+</div>
+</div>
+
+
 </body>
+
+<script>
+
+</script>
 </html>
