@@ -1,6 +1,7 @@
 /* Styles généraux */
 body {
-	background-color:white;
+  background-image: url('fond.png'); /* Image pour la div annonce */
+  background-size: cover;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -9,59 +10,162 @@ body {
   align-items: center; /* Centre le contenu horizontalement */
 }
 
+ .legal-container{
+	 background-color: white;
+  font-family: Candara, sans-serif;
+	 margin-bottom: 10vw;
+	   text-align: left;
+	     color: black;
+		   position: relative;
+		     justify-content: center;
+			 padding: 5vw;
+			 margin-top: 30vw;
+ }
+	
+/* Styles pour le footer */
+footer {
+  background-color: black;
+  color: white;
+  padding: 0px 0;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%; /* Occupe toute la largeur de l'écran */
+  z-index: 1000; /* Assure une position au-dessus d'autres éléments si nécessaire */
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+footer ul li {
+  margin-right: 20px;
+  margin-bottom: 10px; /* Espacement entre les liens */
+}
+
+footer ul li:last-child {
+  margin-right: 0;
+}
+
+footer ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px; /* Espacement intérieur des liens */
+  border-radius: 5px; /* Coins arrondis */
+  display: inline-block; /* Assure que les liens aient une taille définie */
+}
+
+footer ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Media query pour les écrans plus petits */
+@media screen and (max-width: 767px) {
+  footer ul li {
+    margin-right: 10px;
+    margin-bottom: 8px;
+  }
+  
+  footer ul li a {
+    padding: 4px 8px;
+    font-size: 12px; /* Ajustement de la taille du texte pour les petits écrans */
+  }
+}
+
 /* Style pour le conteneur du logo et de l'autre image */
 .logo-container {
+	      position: fixed; /* Position fixe */
 	background-color: white;
-  display: flex; /* Affichage en ligne des éléments */
-  align-items: center; /* Centre les éléments verticalement */
-  justify-content: center; /* Centre les éléments horizontalement */
+  text-align: center;
   max-height: 450px;
+  z-index:10000;
 }
 
 /* Style pour le logo */
 .logo {
-  width: 30%; /* Occupe 40% de la largeur du conteneur */
+  max-width: 100%; /* Occupe 40% de la largeur du conteneur */
   height: auto; /* Ajuste la hauteur automatiquement pour préserver les proportions */
   margin-top: 0px; /* Espacement entre le logo et l'autre image */
   margin-left: 0px;
+  
 }
 
 /* Style pour le bandeau noir */
 .bande-noire {
+  font-family: Candara, sans-serif;
   background-color: black;
   text-align: center;
   color: white;
   font-weight: bold;
-  font-size: 2vw; /* Taille de la police en fonction de la largeur de l'écran */
+  font-size: 18px; /* Taille de la police en fonction de la largeur de l'écran */
   width: 100vw; /* Occupe toute la largeur de l'écran */
   padding: 0.1vw; /* Espacement intérieur réduit */
-  margin: 0; /* Réinitialisation des marges */
+  margin-top: 11.5vw; /* Réinitialisation des marges */
   box-sizing: border-box; /* Garde la largeur réelle incluant le padding */
   line-height: 0.1; /* Hauteur de ligne pour correspondre à la taille de la police */
     z-index:99;
 margin-bottom: 2vw;
 }
+/* Media query pour les écrans de taille différente */
+@media screen and (min-width: 768px) {
+  .logo {
+    width: 20%; /* Pour les écrans de taille supérieure à 768px */
 
-.annonce {
-  background-image: url('TACT Titre.gif'); /* Image pour la div annonce */
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100vw; /* Occupe toute la largeur de l'écran */
-  height: 40vw;
-  position: relative;
-  top: -3px;
-  z-index:70;
+  }
 }
 
-.annonce2 {
+@media screen and (max-width: 767px) {
+  .logo {
+    width: 55%; /* Pour les écrans de taille inférieure à 768px (téléphones) */
+  }
+
+  .bande-noire {
+    font-size: 14px; /* Ajustement de la taille du texte */
+    padding: 1px; /* Ajustement de l'espacement interne */
+  margin-top: 30vw;
+  }
+}
+
+.annonce {
   background-image: url('image2.png'); /* Image pour la div annonce */
   background-size: cover;
   background-repeat: no-repeat;
   width: 100vw; /* Occupe toute la largeur de l'écran */
   height: 40vw;
   position: relative;
-    top: -1px;
+  top: -2vw;
+  z-index:70;
+  margin-top: 0vw;
 }
+
+.annonce2 {
+  background-image: url('image1.png'); /* Image pour la div annonce */
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw; /* Occupe toute la largeur de l'écran */
+  height: 45vw;
+  position: relative;
+    top: -1vw;
+	  z-index:69;
+}
+
+.annonce3 {
+  background-image: url('TACT Titre.gif'); /* Image pour la div annonce */
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw; /* Occupe toute la largeur de l'écran */
+  height: 45vw;
+  position: relative;
+    top: -1vw;
+	  z-index:68;
+}
+
 .svg2 {
       margin-top: -71vw;
     }
@@ -139,3 +243,16 @@ margin-bottom: 2vw;
     opacity: 0; /* Retour à une opacité de 0 à la fin */
     transform: scale(1.1); /* Dézoom à la fin */
   }
+ 
+    #section1 {
+      margin-top: 200vw; /* par exemple */
+    }
+	    #section2 {
+      margin-top: 60vw; /* par exemple */
+    }
+	    #section3 {
+       margin-top: 60vw; /* par exemple */
+    }
+	    #section4 {
+       margin-top: 60vw; /* par exemple */
+    }
