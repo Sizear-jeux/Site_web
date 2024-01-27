@@ -1,258 +1,197 @@
-/* Styles généraux */
 body {
-  background-image: url('fond.png'); /* Image pour la div annonce */
+    background-color: #191818;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+	margin-top: 10vw;
+}
+
+.container {
+    display: flex;
+    justify-content: center; /* Centrer horizontalement les colonnes */
+}
+
+.column {
+    width: 180px; /* Ajustez la largeur des colonnes selon vos besoins */
+	height: 200vw;
+    margin: 10px;
+	position: relative;
+}
+
+.column:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay noir semi-transparent */
+}
+
+.column:first-child {
+    background-image: url('studio.png');
+    background-size: cover;
+    animation: scrollLeftRight 12s infinite alternate; /* Applique l'animation */
+	opacity: 1;
+}
+
+/* Animation pour faire défiler l'image de droite à gauche puis de gauche à droite */
+@keyframes scrollLeftRight {
+    0% {
+        background-position: left; /* Position initiale à droite */
+    }
+    100% {
+        background-position: right; /* Position finale à gauche */
+    }
+}
+
+.column:last-child {
+      background-image: url('jeux.png'); /* Image pour la div annonce */
   background-size: cover;
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centre le contenu horizontalement */
+    animation: scrollRightLeft 12s infinite alternate; /* Applique l'animation */
+	opacity: 1;
 }
 
- .legal-container{
-	 background-color: white;
-  font-family: Candara, sans-serif;
-	 margin-bottom: 10vw;
-	   text-align: left;
-	     color: black;
-		   position: relative;
-		     justify-content: center;
-			 padding: 5vw;
-			 margin-top: 30vw;
- }
-	
-/* Styles pour le footer */
-footer {
-  background-color: black;
-  color: white;
-  padding: 0px 0;
-  text-align: center;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%; /* Occupe toute la largeur de l'écran */
-  z-index: 1000; /* Assure une position au-dessus d'autres éléments si nécessaire */
+/* Animation pour faire défiler l'image de droite à gauche puis de gauche à droite */
+@keyframes scrollRightLeft {
+    0% {
+        background-position: right; /* Position initiale à droite */
+    }
+    100% {
+        background-position: left; /* Position finale à gauche */
+    }
 }
 
-footer ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-footer ul li {
-  margin-right: 20px;
-  margin-bottom: 10px; /* Espacement entre les liens */
-}
-
-footer ul li:last-child {
-  margin-right: 0;
-}
-
-footer ul li a {
-  color: white;
-  text-decoration: none;
-  padding: 5px 10px; /* Espacement intérieur des liens */
-  border-radius: 5px; /* Coins arrondis */
-  display: inline-block; /* Assure que les liens aient une taille définie */
-}
-
-footer ul li a:hover {
-  text-decoration: underline;
-}
-
-/* Media query pour les écrans plus petits */
-@media screen and (max-width: 767px) {
-  footer ul li {
-    margin-right: 10px;
-    margin-bottom: 8px;
-  }
-  
-  footer ul li a {
-    padding: 4px 8px;
-    font-size: 12px; /* Ajustement de la taille du texte pour les petits écrans */
-  }
-}
-
-/* Style pour le conteneur du logo et de l'autre image */
 .logo-container {
-	      position: fixed; /* Position fixe */
-	background-color: white;
-  text-align: center;
-  max-height: 450px;
-  z-index:10000;
+    position: fixed;
+    background-color: white;
+    text-align: center;
+    max-height: 450px;
+    width: 100vw;
+    left: 0;
+    top: 0;
+    z-index: 1;
 }
 
-/* Style pour le logo */
 .logo {
-  max-width: 100%; /* Occupe 40% de la largeur du conteneur */
-  height: auto; /* Ajuste la hauteur automatiquement pour préserver les proportions */
-  margin-top: 0px; /* Espacement entre le logo et l'autre image */
-  margin-left: 0px;
-  
+    max-width: 50%;
+    height: auto;
+    margin-top: 0;
+    margin-left: 0;
 }
 
-/* Style pour le bandeau noir */
 .bande-noire {
-  font-family: Candara, sans-serif;
-  background-color: black;
-  text-align: center;
-  color: white;
-  font-weight: bold;
-  font-size: 18px; /* Taille de la police en fonction de la largeur de l'écran */
-  width: 100vw; /* Occupe toute la largeur de l'écran */
-  padding: 0.1vw; /* Espacement intérieur réduit */
-  margin-top: 11.5vw; /* Réinitialisation des marges */
-  box-sizing: border-box; /* Garde la largeur réelle incluant le padding */
-  line-height: 0.1; /* Hauteur de ligne pour correspondre à la taille de la police */
-    z-index:99;
-margin-bottom: 2vw;
+    font-family: Candara, sans-serif;
+    background-color: black;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    width: 100vw;
+    padding: 0.1vw;
+    box-sizing: border-box;
+    line-height: 0.1;
+    margin-bottom: 1vw;
+    position: fixed;
+    top: -3vw;
+    left: 0;
+    z-index: 2;
+	    margin-top: 13vw;
 }
+
 /* Media query pour les écrans de taille différente */
 @media screen and (min-width: 768px) {
   .logo {
-    width: 20%; /* Pour les écrans de taille supérieure à 768px */
-
+    width: 20%;
   }
 }
 
 @media screen and (max-width: 767px) {
   .logo {
-    width: 55%; /* Pour les écrans de taille inférieure à 768px (téléphones) */
+    width: 55%;
   }
-
-  .bande-noire {
-    font-size: 14px; /* Ajustement de la taille du texte */
-    padding: 1px; /* Ajustement de l'espacement interne */
-  margin-top: 30vw;
+    .bande-noire {
+    font-size: 15px;
+    padding: 0px;
+    margin-top: 30vw;
   }
-}
-
-.annonce {
-  background-image: url('image2.png'); /* Image pour la div annonce */
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100vw; /* Occupe toute la largeur de l'écran */
-  height: 40vw;
-  position: relative;
-  top: -2vw;
-  z-index:70;
-  margin-top: 0vw;
-}
-
-.annonce2 {
-  background-image: url('image1.png'); /* Image pour la div annonce */
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100vw; /* Occupe toute la largeur de l'écran */
-  height: 45vw;
-  position: relative;
-    top: -1vw;
-	  z-index:69;
-}
-
-.annonce3 {
-  background-image: url('TACT Titre.gif'); /* Image pour la div annonce */
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100vw; /* Occupe toute la largeur de l'écran */
-  height: 45vw;
-  position: relative;
-    top: -1vw;
-	  z-index:68;
-}
-
-.svg2 {
-      margin-top: -71vw;
+      footer ul li {
+        margin-right: 10px;
+        margin-bottom: 0px;
     }
-
-/* Styles pour le cercle */
-.cercle1 {
-  background-color: white;
-  position: absolute;
-  width: 27vw; /* Diamètre du cercle */
-  height: 6vw; /* Diamètre du cercle */
-  border-radius: 3vw;
-  padding: -10px 0; /* Espacement intérieur réduit */
-  margin: 0; /* Réinitialisation des marges */
-  margin-top: 15vw;
-  margin-left: 6vw;
-  animation: zoomInOut 3s ease-in-out infinite; /* Appliquer l'animation */
-  z-index: 90;
+  
+    footer ul li a {
+        padding: 4px 8px;
+        font-size: 14px;
+    }
+	
 }
 
-/* Ajout de l'animation pour le cercle */
-@keyframes zoomInOut {
-  0% {
-    transform: scale(0.85); /* Taille normale */
-  }
-  50% {
-    transform: scale(1); /* Zoom */
-  }
-  100% {
-    transform: scale(0.85); /* Retour à la taille normale */
-  }
+.youtube {
+position: fixed;
+bottom: 75px;
+z-index:20000;
+align-items: center;
+display: flex;
 }
 
-.aureole1 {
-  background-color: white;
-  position: absolute;
-  width: 24vw; /* Diamètre du cercle */
-  height: 8vw; /* Diamètre du cercle */
-  border-radius: 3vw;
-  padding: -10px 0; /* Espacement intérieur réduit */
-  margin: 0; /* Réinitialisation des marges */
-  margin-top: 14vw;
-  margin-left: 7vw;
-  animation: aureoleAnim 3s ease-in-out infinite; /* Appliquer l'animation */
-  z-index:88;
+.youtube img{
+	width: 60px;
+	height: auto;
+	padding: 5px;
+	align-self: center;
 }
 
-.aureole2 {
-  background-color: white;
-  position: absolute;
-  width: 27vw; /* Diamètre du cercle */
-  height: 9vw; /* Diamètre du cercle */
-  border-radius: 3vw;
-  padding: -10px 0; /* Espacement intérieur réduit */
-  margin: 0; /* Réinitialisation des marges */
-  margin-top: 14vw;
-  margin-left: 6vw;
-  animation: aureoleAnim 3s ease-in-out infinite; /* Appliquer l'animation */
-  z-index:89;
+/* Styles pour le footer */
+footer {
+    background-color: black;
+    color: white;
+    padding: 10px 0;
+    position: fixed;
+	justify-content: center;
+	display: relative;
+    left: 0;
+    bottom: 15px;
+    width: 100%; /* Occupe toute la largeur de l'écran */
+    z-index: 1000; /* Assure une position au-dessus d'autres éléments si nécessaire */
 }
 
-/* Animation pour les auréoles */
-@keyframes aureoleAnim {
-	0%{
-		opacity: 0;
-	}
-  30% {
-    opacity: 0; /* Démarre avec une opacité de 0 */
-    transform: scale(0.9); /* Taille normale au début */
-  }
-  70% {
-    opacity: 0.4; /* Augmente l'opacité à mi-chemin */
-    transform: scale(1.05); /* Zoom à mi-chemin */
-  }
-  100% {
-    opacity: 0; /* Retour à une opacité de 0 à la fin */
-    transform: scale(1.1); /* Dézoom à la fin */
-  }
- 
-    #section1 {
-      margin-top: 200vw; /* par exemple */
-    }
-	    #section2 {
-      margin-top: 60vw; /* par exemple */
-    }
-	    #section3 {
-       margin-top: 60vw; /* par exemple */
-    }
-	    #section4 {
-       margin-top: 60vw; /* par exemple */
-    }
+.footer-line {
+    background: linear-gradient(to right, transparent 10%, white 40%, white 60%, transparent 90%);
+    height: 4px; /* Ajustez l'épaisseur de la ligne selon vos besoins */
+    width: 80vw; /* Occupe 80% de la largeur de l'écran */
+    margin: 0 auto; /* Centre la ligne horizontalement */
+}
+
+footer ul {
+    list-style: none;
+    padding: 5px;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+	justify-content: center;
+}
+
+footer ul li {
+    margin-right: 20px;
+    margin-bottom: 0px;
+}
+
+footer ul li:last-child {
+    margin-right: 0;
+}
+
+footer ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 0px;
+    border-radius: 0px;
+    display: inline-block;
+}
+
+footer ul li a:hover {
+    text-decoration: underline;
+}
