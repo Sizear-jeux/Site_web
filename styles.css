@@ -24,7 +24,7 @@ footer {
 	justify-content: center;
 	display: relative;
     left: 0;
-    bottom: 35px;
+    bottom: 20px;
     width: 100%; /* Occupe toute la largeur de l'écran */
     z-index: 1000; /* Assure une position au-dessus d'autres éléments si nécessaire */
 }
@@ -35,7 +35,7 @@ footer {
 }
 
 .column {
-    width: 180px; /* Ajustez la largeur des colonnes selon vos besoins */
+    width: 185px; /* Ajustez la largeur des colonnes selon vos besoins */
 	height: 230vw;
     margin: 10px;
 	position: relative;
@@ -142,7 +142,7 @@ footer {
 
 .youtube {
 position: fixed;
-bottom: 95px;
+bottom:80px;
 z-index:20000;
 align-items: center;
 display: flex;
@@ -257,7 +257,7 @@ footer ul li a:hover {
 @media screen and (max-width: 767px) {
     footer ul li {
         margin-right: 10px;
-        margin-bottom: 8px;
+        margin-bottom: 0px;
     }
   
     footer ul li a {
