@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chronique</title>
+    <!-- Inclusion de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Calisto MT, sans-serif;
+            font-size: 20px;
+            color: black;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            display: grid;
+            place-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .phone-keyboard {
+            display: grid;
+            grid-template-columns: repeat(3, 80px);
+            gap: 10px;
+            max-width: 270px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .phone-keyboard button {
+			font-family: Consolas, sans-serif;
+            width: 100%;
+            height: 60px;
+            border: none;
+            border-radius: 10px;
+            font-size: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+            background-color: #eee;
+        }
+
+        #typedKeys {
+			font-family: Consolas, sans-serif;
+            width: 80%;
+            max-width: 100px;
+            margin: 5px auto;
+            padding: 5px;
+            font-size: 30px;
+            border: 2px solid #ccc;
+            outline: none;
+            background-color: none;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            border-radius: 15px;
+			#typedKeys
+		}
+
+    </style>
+</head>
+<body>
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <i id="musicIcon" class="fa fa-pause" style="font-size: arial; margin-right: 20px; cursor: pointer;"></i>
+        <h1>Chronique</h1>
+    </div>
+
+    <audio id="audioPlayer" src="an-epic-163632.mp3" autoplay loop></audio>
+
+    <div class="phone-keyboard">
+        <button onclick="addToTypedKeys('1')">1</button>
+        <button onclick="addToTypedKeys('2')">2</button>
+        <button onclick="addToTypedKeys('3')">3</button>
+        <button onclick="addToTypedKeys('4')">4</button>
+        <button onclick="addToTypedKeys('5')">5</button>
+        <button onclick="addToTypedKeys('6')">6</button>
+        <button onclick="addToTypedKeys('7')">7</button>
+        <button onclick="addToTypedKeys('8')">8</button>
+        <button onclick="addToTypedKeys('9')">9</button>
+        <button id="speakerBtn" onclick="toggleSpeaker()"><i class="fas fa-volume-up"></i></button>
+        <button onclick="addToTypedKeys('0')">0</button>
+        <button id="crossBtn" onclick="clearTypedKeys()"><i class="fas fa-times"></i></button>
+    </div>
+    
+<input type="text" id="typedKeys" placeholder="" readonly maxlength="3" style="background-color: white;">
+    <div id="paragraphNumber" style="display: none;"></div>
+
+	<audio id="audioPara1" src="Para1.m4a"></audio>
+    <p id="para1" style="display: none;">
+		<strong>*~ 001 ~*</strong><br>
+Vous êtes dans une petite bibliothèque.<br>
+La pièce borgne est faiblement éclairée par une unique chandelle.<br><br>
+Vous surprenez des gardes pendant leur relève.<br>
+Il va falloir vous en débarasser.<br><br>
+Chaque héro prend un dé malus pour ce tour.<br>
+« Evitement possible avec un Trêfle »</p>
+	
+	<audio id="audioPara2" src="Para2.m4a"></audio>
+    <p id="para2" style="display: none;">
+		<strong>*~ 002 ~*</strong><br>
+Au milieu des livres vous trouvez une «Potion de soin» et une «Fiole de tonus».</p>
+	
+	<audio id="audioPara3" src="Para3.m4a"></audio>
+    <p id="para3" style="display: none;">
+	<strong>*~ 003 ~*</strong><br>
+Vous décidez d'ouvrir brusquement la porte dans l'espoir de suprendre d'éventuels individus.
+Allez au 4.<br><br>
+Vous préférez la jouer discret en ouvrant lentement la porte.
+Allez au 5.<br><br>
+Plus poliment, vous frappez 3 petits coups pour avertir de votre arrivée.
+Allez au 6.</p>
+	
+	<audio id="audioPara4" src="Para4.m4a"></audio>
+    <p id="para4" style="display: none;">
+	<strong>*~ 004 ~*</strong><br>
+Deux énormes orcs se réchauffent le fessier auprès du feu.<br>
+Votre entrée les énerve plus quelle ne les surprend.<br><br>
+Chaque héro prend un dé Malus pour ce tour.</p>
+	
+    <p id="para5" style="display: none;">
+	<strong>*~ 005 ~*</strong><br>
+Deux énormes orcs se réchaffent le fessier auprès du feu.<br>
+Ils ne vous ont pas vu vous donnant l'avantage.<br><br>
+Chaque héro prend un dé bonus pour ce tour.</p>
+
+    <p id="para6" style="display: none;">
+	<strong>*~ 006 ~*</strong><br>
+Vous frappez mais personne ne répond.<br>
+Vous poussez la porte et 2 énormes orcs fondent sur vous.<br><br>
+Chaque héro perd immédiatement 2Pv.</p>
+
+    <p id="para7" style="display: none;">
+	<strong>*~ 007 ~*</strong><br>
+Vous observez le feu dans la cheminée lorsque vous appercevez une sorte de clé au milieu des braises rougeoyantes.<br>
+A l'aide de votre arme, vous dégagez la petite clé hors du foyer et la laisser refroidire avant le la récupérer.<br><br>
+Pernez la clé rouage.</p>
+
+    <p id="para8" style="display: none;">
+	<strong>*~ 008 ~*</strong><br>
+Vous entrez avec fracas dans la pièce, toutes armes dehors.<br>
+Allez au 009.<br><br>
+Vous entrez subreptissement en tapinois.<br>
+Allez au 010.<br><br>
+Vous donnez 4 grands coups sur la porte espérant attirer un ennemi dehors.<br>
+Allez au 011.</p>
+
+    <p id="para9" style="display: none;">
+	<strong>*~ 009 ~*</strong><br>
+Vos ennemis sont surpris par cette entrée soudaine.<br>
+Ils étaient en train de manger visiblement.<br><br>
+Chaque héro prend un dé bonus pour ce tour.</p>
+
+    <p id="para10" style="display: none;">
+	<strong>*~ 010 ~*</strong><br>
+Vous êtes rapidement repérés et vos ennemis se mettent en formation de combat.<br>
+Chaque héro prend un dé malus pour ce tour.<br></p>
+
+    <p id="para11" style="display: none;">
+	<strong>*~ 011 ~*</strong><br>
+Aprés avoir frappé, vous vous mettez de chaque coté de la porte.<br>
+Un garde squelette sort.<br>
+L'un de vous lui asséne un coup fatal tandis que le second ferme la porte derrière lui.<br><br>
+Cela fera un de moins à combattre.<br>
+Chaque héro prend le nombre d'XP du garde squellette.<br><br>
+Retournez au chapitre 008 et choissiez parmit les 2 autres options restantes.</p>
+
+    <p id="para12" style="display: none;">
+	<strong>*~ 012 ~*</strong><br>
+Un joli butin s'offre à vous.<br>
+Probablement la solde des gardes du manoir.<br><br>
+Chaque hero gagne 500 Po.</p>
+
+    <p id="para13" style="display: none;">
+	<strong>*~ 013 ~*</strong><br>
+Vous etes dans un long couloir éclairé par des torches.<br>
+Pas un bruit tout semble calme.<br>
+Un peu trop calme, vous n'aimez pas beaucoup ca.<br><br>
+Vous avancez prudemment, allez au 014.<br><br>
+Vous avancez normalement, allez au 015.<br><br>
+Vous courrez pour éviter d'être surpis à roder dans les couloirs, allez au 016.</p>
+
+    <p id="para14" style="display: none;">
+	<strong>*~ 014 ~*</strong><br>
+Alors que vous marchez lentement, vous reprérez un fil tendu au milieu du couloir.<br>
+C'est un piège que vous avez sagement évité.</p>
+
+    <p id="para15" style="display: none;">
+	<strong>*~ 015 ~*</strong><br>
+Alors que vous marchez, un piège se déclenche lancant une salve de flèches en votre direction.<br><br>
+Chaque héro perd 2 Pv.<br>
+Evitez avec 1 trefle.</p>
+
+    <p id="para16" style="display: none;">
+	<strong>*~ 016 ~*</strong><br>
+Alors que vous courrez, un piège se déclenche lancant une salve de flèches en votre direction.<br><br>
+Vu votre vitesse, impossible de l'éviter.<br>
+Chaque héro perd 2 Pv.</p>
+
+    <p id="para17" style="display: none;">
+	<strong>*~ 017 ~*</strong><br>
+L'ouverture du coffre déclenche une boule de feu.<br><br>
+Chaque héro perd 2Pv.<br>
+Evitez avec 1 trefle.<br><br>
+A l'intérieur du coffre vous trouvez une clé en argent en forme d'étoile.</p>
+
+    <p id="para18" style="display: none;">
+	<strong>*~ 018 ~*</strong><br>
+Vous examinez les caisses entreposées.<br>
+Dissimulé au milieu, un levier en métal sort d'entre les dalles.<br><br>
+Vous abaissez le levier, allez au 019.<br><br>
+Hum, ca sente le piège à plein nez, continuez votre exploration.</p>
+
+    <p id="para19" style="display: none;">
+	<strong>*~ 019 ~*</strong><br>
+Révélez la carte exploration n°9 et placez ce qui doit l'être.<br><br>
+
+3 lanciers squellette tombent du plafond.<br>
+Ils étaient harnachés au dessus de vous en état de trans.<br>
+Surement en attente d'ordre.<br><br>
+Le fracas qu'il font en atterrisant fait tombé un panneau de bois de l'un des murs révélant un coffre.<br><br>
+Chaque héro dispose d'un dé bonus pour ce tour.</p>
+
+    <p id="para20" style="display: none;">
+	<strong>*~ 020 ~*</strong><br>
+Grace aux deux clés la lourde porte s'ouvre devant vous.<br>
+Trois énormes coffres vous font face.<br><br>
+Vous voila riche mes amis !<br><br>
+FIN DE QUETE</p>
+
+    <p id="para21" style="display: none;">
+	<strong>*~ 021 ~*</strong><br>
+Le coffre contient 100Po pour chaque héro.</p>
+
+<div id="lastDisplayed">
+    <hr style="border: none; background-color: #000; margin: 5px;">
+    <div id="lastDisplayedParagraphs">
+        <!-- Les trois derniers paragraphes affichés seront ajoutés ici -->
+    </div>
+</div>
+
+    <script>
+        let audioPlayer = document.getElementById('audioPlayer');
+        let isMusicPlaying = false;
+        let currentParagraph = null;
+		let lastDisplayedParagraphs = [];
+
+        function toggleMusic() {
+            const musicIcon = document.getElementById('musicIcon');
+            
+            if (isMusicPlaying) {
+                audioPlayer.pause();
+                isMusicPlaying = false;
+                musicIcon.classList.add('fa-pause');
+                musicIcon.classList.remove('fa-music');
+            } else {
+                audioPlayer.play();
+                isMusicPlaying = true;
+                musicIcon.classList.remove('fa-pause');
+                musicIcon.classList.add('fa-music');
+            }
+        }
+
+        document.getElementById('musicIcon').addEventListener('click', toggleMusic);
+
+        const typedKeysInput = document.getElementById('typedKeys');
+        const paragraphNumber = document.getElementById('paragraphNumber');
+        let clicked = false;
+        let cleared = true;
+
+function addToTypedKeys(key) {
+    if (clicked && cleared && typedKeysInput.value.length < 3) {
+        typedKeysInput.value += key;
+        clicked = false;
+
+        // Ajouter la classe pour l'animation de la touche pressée
+        this.classList.add('key-pressed');
+
+        // Supprimer la classe après un court délai pour annuler l'animation
+        setTimeout(() => {
+            this.classList.remove('key-pressed');
+        }, 100);
+    }
+}
+
+function toggleSpeaker() {
+    const speakerIcon = document.querySelector('#speakerBtn i');
+    const typedValue = typedKeysInput.value;
+
+    const musicAudio = document.getElementById('audioPlayer');
+
+    if (musicAudio && speakerIcon.classList.contains('fa-volume-up')) {
+        for (let i = 1; i <= 999; i++) {
+            const audioPara = document.getElementById(`audioPara${i}`);
+            if (audioPara) {
+                if (i === parseInt(typedValue)) {
+                    audioPara.play();
+                } else {
+                    audioPara.pause();
+                    audioPara.currentTime = 0; // Réinitialiser l'audio à 0 pour le redémarrage
+                }
+            }
+        }
+    }
+
+    speakerIcon.classList.toggle('fa-volume-mute');
+    speakerIcon.classList.toggle('fa-volume-up');
+
+    if (musicAudio) {
+        if (speakerIcon.classList.contains('fa-volume-up')) {
+            musicAudio.volume = 1.0;
+        } else {
+            musicAudio.volume = 0;
+        }
+    }
+}
+
+        function clearTypedKeys() {
+            typedKeysInput.value = '';
+            cleared = true;
+            paragraphNumber.style.display = 'none';
+            if (currentParagraph) {
+                currentParagraph.style.display = 'block';
+            }
+        }
+
+        document.getElementById('typedKeys').addEventListener('click', function() {
+            clicked = true;
+            cleared = false;
+            const typedValue = typedKeysInput.value;
+            const paragraphs = document.querySelectorAll('p');
+            paragraphs.forEach(paragraph => {
+                paragraph.style.display = 'none';
+            });
+ if (typedValue >= 1 && typedValue <= 999) {
+    const paraToShow = document.getElementById(`para${typedValue}`);
+    paraToShow.style.display = 'none'; // Afficher le paragraphe
+
+    paragraphNumber.innerText = typedValue;
+    paragraphNumber.style.display = 'none';
+    currentParagraph = paraToShow;
+
+    // Stocker le HTML complet du paragraphe, pas seulement le texte brut
+    lastDisplayedParagraphs.unshift(paraToShow.innerHTML);
+    if (lastDisplayedParagraphs.length > 3) {
+        lastDisplayedParagraphs.pop(); // Supprimer le dernier élément s'il y en a plus de trois
+    }
+
+    // Mettre à jour l'affichage des trois derniers paragraphes
+    updateLastDisplayedParagraphs();
+            }
+        });
+
+        document.getElementById('typedKeys').addEventListener('blur', function() {
+            typedKeysInput.value = '';
+        });
+
+        document.querySelectorAll('.phone-keyboard button').forEach(button => {
+            button.addEventListener('click', function() {
+                clicked = true;
+                cleared = false;
+                if (typedKeysInput.value.length < 3) {
+                    typedKeysInput.value += button.textContent;
+                }
+                const paragraphs = document.querySelectorAll('p');
+                paragraphs.forEach(paragraph => {
+                    paragraph.style.display = 'none';
+                });
+                paragraphNumber.style.display = 'none';
+            });
+        });
+		
+let fadeOutInterval;
+let fadeInInterval;
+
+document.getElementById('typedKeys').addEventListener('click', function() {
+    const typedValue = typedKeysInput.value;
+    const audioToPlay = document.getElementById(`audioPara${typedValue}`);
+    const musicAudio = document.getElementById('audioPlayer');
+    
+    if (audioToPlay) {
+        audioToPlay.play();
+        
+        if (musicAudio) {
+            clearInterval(fadeOutInterval);
+            clearInterval(fadeInInterval);
+            
+            fadeOutInterval = setInterval(() => {
+                if (musicAudio.volume > 0.1) {
+                    musicAudio.volume -= 0.1;
+                } else {
+                    clearInterval(fadeOutInterval);
+                    musicAudio.volume = 0.1;
+                }
+            }, 100);
+            
+            audioToPlay.addEventListener('ended', function handleEnded() {
+                audioToPlay.removeEventListener('ended', handleEnded); // Remove the event listener
+                fadeInInterval = setInterval(() => {
+                    if (musicAudio.volume < 1.0) {
+                        musicAudio.volume += 0.1;
+                    } else {
+                        clearInterval(fadeInInterval);
+                        musicAudio.volume = 1.0;
+                    }
+                }, 100);
+            });
+        }
+    }
+});
+function disableNumberButtons() {
+    const numberButtons = document.querySelectorAll('.phone-keyboard button');
+    numberButtons.forEach(button => {
+        button.disabled = true;
+    });
+}
+
+function enableNumberButtons() {
+    const numberButtons = document.querySelectorAll('.phone-keyboard button');
+    numberButtons.forEach(button => {
+        button.disabled = false;
+    });
+}
+
+document.getElementById('typedKeys').addEventListener('click', function() {
+    const typedValue = typedKeysInput.value;
+    const audioToPlay = document.getElementById(`audioPara${typedValue}`);
+    const speakerIcon = document.querySelector('#speakerBtn i');
+
+     if (audioToPlay && speakerIcon.classList.contains('fa-volume-up')) {
+        disableNumberButtons(); // Désactiver les boutons numérotés de 0 à 9 pendant la lecture de l'audio de paragraphe
+        audioToPlay.play();
+
+        // Le reste de votre code pour la gestion du volume audio et la réinitialisation des boutons après la fin de la lecture
+
+ audioToPlay.addEventListener('ended', function handleEnded() {
+            audioToPlay.removeEventListener('ended', handleEnded); // Retirer l'écouteur d'événements
+            enableNumberButtons(); // Réactiver les boutons numérotés de 0 à 9 une fois la lecture terminée
+        });
+    }
+});
+
+function updateLastDisplayedParagraphs() {
+    const lastDisplayedList = document.getElementById('lastDisplayedParagraphs');
+
+    // Réinitialiser la liste
+    lastDisplayedList.innerHTML = '';
+
+    // Ajouter les paragraphes à la liste (du premier au dernier)
+    lastDisplayedParagraphs.forEach((paragraphHTML, index) => {
+        const paragraphDiv = document.createElement('div');
+        
+        paragraphDiv.innerHTML = paragraphHTML; // Utilisation du contenu HTML complet
+
+        // Ajouter une bordure inférieure et une marge autour du paragraphe
+        if (index < lastDisplayedParagraphs.length - 1) {
+            paragraphDiv.style.borderBottom = '2px solid #ccc'; // Bordure inférieure
+            paragraphDiv.style.margin = '10px 0'; // Ajouter une marge avant et après le paragraphe
+            paragraphDiv.style.paddingBottom = '10px'; // Espace supplémentaire en dessous du texte
+        }
+
+        lastDisplayedList.appendChild(paragraphDiv);
+    });
+}
+
+function applyClickEffect() {
+    const typedKeys = document.getElementById('typedKeys');
+    typedKeys.style.transform = 'scale(0.8)'; // Applique une réduction de la taille
+   typedKeys.style.color = 'black'; // Change la couleur du texte
+    typedKeys.style.backgroundColor = 'lightgray'; // Change la couleur de fond
+
+    setTimeout(() => {
+        // Rétablit les styles par défaut après 500 millisecondes (ajustable selon votre préférence)
+        typedKeys.style.transform = 'scale(1)';
+        typedKeys.style.color = 'black'; // Couleur d'origine à ajuster si nécessaire
+		typedKeys.style.backgroundColor = 'white'; // Change la couleur de fond
+    }, 150); // Délai en millisecondes
+}
+document.getElementById('typedKeys').addEventListener('click', applyClickEffect);
+
+
+async function requestWakeLock() {
+  try {
+    const wakeLock = await navigator.wakeLock.request('screen');
+    // Verrouillage de l'écran obtenu avec succès
+    console.log('Verrouillage de l\'écran obtenu avec succès');
+
+    // Événement pour détecter si le verrouillage est relâché
+    wakeLock.addEventListener('release', () => {
+      console.log('Le verrouillage de l\'écran a été relâché');
+    });
+  } catch (err) {
+    // Le verrouillage de l'écran n'a pas pu être obtenu
+    console.error('Erreur lors de la demande de verrouillage de l\'écran:', err);
+  }
+}
+
+// Appeler la fonction pour demander le verrouillage de l'écran
+requestWakeLock();
+
+    </script>
+</body>
+</html>
