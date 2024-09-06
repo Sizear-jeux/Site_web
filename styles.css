@@ -1,0 +1,592 @@
+ /* Style de base */
+body {
+     font-family: "Raleway", sans-serif;
+}
+
+h1 {
+    font-family: "Teko", sans-serif;
+	font-size: 20px;
+}
+
+p {
+    font-family: "Lobster", sans-serif;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: -1px;
+    left: 0;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 22vh; /* Hauteur de l'en-tête */
+    z-index: 998;
+    animation: zoomIn 2s ease-out; /* Animation de zoom/dézoom du logo */
+}
+
+header img {
+    max-width: 20vw; /* Taille réduite du logo */
+    height: auto;
+    z-index: 997;
+    position: absolute;
+    animation: zoomIn 2s ease-out; /* Animation du logo */
+}
+
+.banner {
+    position: fixed;
+    top: 21vh; /* Positionner le bandeau juste en dessous de l'en-tête */
+    width: 100%;
+    background-color: black;
+    text-align: center;
+    padding: 0px;
+    height: 4vh;
+    z-index: 999;
+    opacity: 1; /* Départ visible */
+	animation: slideIn 2s ease-out forwards; /* Animation du texte venant de haut en bas */
+}
+
+.banner p {
+    color: white;
+    font-size: 24px;
+    margin: 0;
+    position: relative;
+    animation: slideIn 2s ease-out forwards; /* Animation du texte venant de haut en bas */
+}
+
+/* Style pour la section intro */
+.intro {
+    margin-top: 22vh;
+    padding: 0px;
+    background-color: #f4f4f4; /* Couleur de fond pour la section intro */
+    opacity: 0; /* Départ invisible */
+    animation: fadeIn 3s ease-out forwards; /* Animation de fondu pour la section intro */
+}
+
+.slider {
+    position: relative;
+    max-width: 100%;
+    height: 65vh; /* Ajustez la hauteur si nécessaire */
+    overflow: hidden;
+}
+
+/* Conteneur des diapositives */
+.slides {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+/* Style pour chaque diapositive */
+.slide {
+    min-width: 100%; /* Assurez-vous que chaque diapositive occupe toute la largeur */
+    box-sizing: border-box;
+    position: relative; /* Pour le positionnement des boutons */
+}
+
+/* Style pour les images des diapositives */
+.slide img {
+    width: 100%;
+    height: auto; /* Ajuster pour conserver les proportions */
+}
+
+button.prev, button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.5);
+    color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 1001; /* Z-index plus élevé pour les boutons */
+    height: 80px; /* Hauteur du bouton */
+    width: 80px; /* Largeur du bouton */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button.prev::before, button.next::before {
+    content: '';
+    display: block;
+    width: 30px; /* Largeur des flèches */
+    height: 30px; /* Hauteur des flèches */
+    border: solid white; /* Couleur des flèches */
+    border-width: 0 10px 10px 0; /* Épaisseur des flèches */
+}
+
+button.next::before {
+    transform: rotate(-45deg); /* Rotation pour flèche droite */
+	margin-right: 10px;
+}
+
+button.prev::before {
+    transform: rotate(135deg); /* Rotation pour flèche droite */
+	margin-left: 20px;
+}
+
+/* Positionnement des boutons */
+button.prev {
+    left: 35px;
+}
+
+button.next {
+    right: 35px;
+}
+
+.indicators {
+    position: absolute; /* Positionner absolument au bas du slider */
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    cursor: pointer;
+    z-index: 1001; /* Z-index plus élevé pour les indicateurs */
+}
+
+.indicator {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #bbb;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.indicator.active {
+    background-color: red;
+}
+
+/* Style pour le bouton Découvrir */
+.discover-button {
+    position: absolute; /* Modifier pour positionner par rapport à chaque diapositive */
+    top: 10vh; /* Positionné à 10% de la hauteur du conteneur */
+    left: 20%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 168, 31, 0.8);
+    color: white;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 20px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    z-index: 1003; /* Assurer que le bouton est au-dessus des autres éléments */
+    display: flex; /* Utilisation de Flexbox pour centrer */
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    text-align: center;
+    height: 30px; /* Ajustement de la hauteur du bouton */
+    width: 130px; /* Ajustement de la largeur du bouton */
+    font-size: 18px; /* Taille du texte */
+	animation: pulse 2s infinite; /* Animation de pulsation infinie */
+    transition: transform 0.3s ease-out; /* Transition fluide pour les effets de transformation */
+}
+
+
+/* Style du pied de page */
+footer {
+    background-color: black;
+    color: white;
+    width: 100%;
+    text-align: center;
+    position: fixed;
+	height: 15vh;
+	animation: slideUp 1s ease-out forwards;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 25px auto;
+}
+
+.footer-left, .footer-right {
+    flex: 1;
+}
+
+.footer-left {
+    text-align: left;
+}
+
+.footer-right {
+    text-align: right;
+}
+
+.social-iconY {
+    width: 65px;
+    height: 65px;
+	position : fixed;
+	margin-top: -10px;
+}
+
+.social-iconI {
+    width: 65px;
+    height: 65px;
+	position : fixed;
+	margin-top: -10px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-links li {
+    margin: 0 15px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    font-size: 14px;
+}
+
+
+/* Requêtes de médias pour les très petits écrans                                                                     */
+@media (max-width: 480px) {
+
+ header {
+    position: fixed;
+    width: 100%;
+    top: -1px;
+    left: 0;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 22vh; /* Hauteur de l'en-tête */
+    z-index: 998;
+    animation: zoomIn 2s ease-out; /* Animation de zoom/dézoom du logo */
+}
+
+header img {
+    max-width: 80vw; /* Taille réduite du logo */
+    height: auto;
+    z-index: 997;
+    position: absolute;
+    animation: zoomIn 2s ease-out; /* Animation du logo */
+}
+
+.banner {
+    position: fixed;
+    top: 21vh; /* Positionner le bandeau juste en dessous de l'en-tête */
+    width: 100%;
+    background-color: black;
+    text-align: center;
+    padding: 0px;
+    height: 4vh;
+    z-index: 999;
+    opacity: 1; /* Départ visible */
+	animation: slideIn 2s ease-out forwards; /* Animation du texte venant de haut en bas */
+}
+
+.banner p {
+    color: white;
+    font-size: 24px;
+    margin: 0;
+    position: relative;
+    animation: slideIn 2s ease-out forwards; /* Animation du texte venant de haut en bas */
+}
+
+/* Style pour la section intro */
+.intro {
+    margin-top: 25vh;
+    padding: 0px;
+    background-color: #f4f4f4; /* Couleur de fond pour la section intro */
+    opacity: 0; /* Départ invisible */
+    animation: fadeIn 3s ease-out forwards; /* Animation de fondu pour la section intro */
+}
+
+    .slider .slide img {
+        content: url('intro1-small.png'); /* Image pour la première slide */
+    }
+
+    .slider .slide:nth-of-type(2) img {
+        content: url('intro2-small.png'); /* Image pour la deuxième slide */
+    }
+
+    .slider .slide:nth-of-type(3) img {
+        content: url('intro3-small.png'); /* Image pour la troisième slide */
+    }
+
+.slider {
+    position: relative;
+    max-width: 100%;
+    height: 65vh; /* Ajustez la hauteur si nécessaire */
+    overflow: hidden;
+}
+
+/* Conteneur des diapositives */
+.slides {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+/* Style pour chaque diapositive */
+.slide {
+    min-width: 100%; /* Assurez-vous que chaque diapositive occupe toute la largeur */
+    box-sizing: border-box;
+    position: relative; /* Pour le positionnement des boutons */
+}
+
+/* Style pour les images des diapositives */
+.slide img {
+    width: 100%;
+    height: auto; /* Ajuster pour conserver les proportions */
+}
+
+button.prev, button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.5);
+    color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 1001; /* Z-index plus élevé pour les boutons */
+    height: 60px; /* Hauteur du bouton */
+    width: 60px; /* Largeur du bouton */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button.prev::before, button.next::before {
+    content: '';
+    display: block;
+    width: 25px; /* Largeur des flèches */
+    height: 25px; /* Hauteur des flèches */
+    border: solid white; /* Couleur des flèches */
+    border-width: 0 10px 10px 0; /* Épaisseur des flèches */
+}
+
+button.next::before {
+    transform: rotate(-45deg); /* Rotation pour flèche droite */
+	margin-right: 5px;
+}
+
+button.prev::before {
+    transform: rotate(135deg); /* Rotation pour flèche droite */
+	margin-left: 15px;
+}
+
+/* Positionnement des boutons */
+button.prev {
+    left: 5px;
+}
+
+button.next {
+    right: 5px;
+}
+
+.indicators {
+    position: absolute; /* Positionner absolument au bas du slider */
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    cursor: pointer;
+    z-index: 1001; /* Z-index plus élevé pour les indicateurs */
+}
+
+.indicator {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #bbb;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.indicator.active {
+    background-color: red;
+}
+
+/* Style pour le bouton Découvrir */
+.discover-button {
+    position: absolute; /* Modifier pour positionner par rapport à chaque diapositive */
+    top: 50vh; /* Positionné à 10% de la hauteur du conteneur */
+    left: 30%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 168, 31, 0.8);
+    color: white;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 20px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 50px;
+    z-index: 1003; /* Assurer que le bouton est au-dessus des autres éléments */
+    display: flex; /* Utilisation de Flexbox pour centrer */
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    text-align: center;
+    height: 30px; /* Ajustement de la hauteur du bouton */
+    width: 130px; /* Ajustement de la largeur du bouton */
+    font-size: 18px; /* Taille du texte */
+	animation: pulse 2s infinite; /* Animation de pulsation infinie */
+    transition: transform 0.3s ease-out; /* Transition fluide pour les effets de transformation */
+}
+
+
+/* Style du pied de page */
+footer {
+    background-color: black;
+    color: white;
+    width: 100%;
+    text-align: center;
+    position: fixed;
+	height: 15vh;
+	animation: slideUp 1s ease-out forwards;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 15px auto;
+}
+
+.footer-center {
+margin-left: 50px;
+}
+
+.footer-left, .footer-right {
+    flex: 1;
+}
+
+.footer-left {
+    text-align: left;
+	margin-left: 15px;
+}
+
+.footer-right {
+    text-align: right;
+	margin-right: 65px;
+}
+
+.social-iconY {
+    width: 40px;
+    height: 40px;
+	position : fixed;
+	margin-top: 0px;
+}
+
+.social-iconI {
+    width: 50px;
+    height: 50px;
+	position : fixed;
+	margin-top: -5px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-links li {
+    margin: 0 10px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    font-size: 10px;
+}
+}
+
+/* Animations */
+@keyframes zoomIn {
+    0% {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        background-color: black; /* Dégradé de noir à transparent */
+    }
+    10% {
+        opacity: 0;
+        background-color: black; /* Couleur finale */
+    }
+	100% {
+        opacity: 1;
+        background-color: #f4f4f4; /* Couleur finale */
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px); /* Départ du texte au-dessus */
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0); /* Texte à sa place */
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(100%); /* Départ du pied de page hors de l'écran */
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0); /* Pied de page à sa place finale */
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    }
+    50% {
+        transform: scale(1.2);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    }
+}
