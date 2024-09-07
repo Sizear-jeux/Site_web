@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sizear-Jeux OFFICIEL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Teko:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- En-tête et bandeau précédents -->
+    <header>
+	    <div class="logo-container">
+	<a href="index.html">
+		<img src="logo.gif" alt="Logo">
+	</a>
+		  </div>
+    </header>
+	
+    <div class="banner">
+        <p>Créateur de jeux de société originaux</p>
+    </div>
+
+    <!-- Section Intro avec Slider -->
+    <section class="intro">
+        <div class="slider">
+            <button class="prev">&lt;</button>
+            <div class="slides">
+                <div class="slide">
+                    <img src="intro1.png" alt="Image 1">
+                    <a href="page1.html" class="discover-button"><h1>En savoir plus...</h1></a>
+                </div>
+                <div class="slide">
+                    <img src="intro2.png" alt="Image 2">
+                    <a href="page2.html" class="discover-button"><h1>Découvrir...</h1></a>
+                </div>
+                <div class="slide">
+                    <img src="intro3.png" alt="Image 3">
+                    <a href="page3.html" class="discover-button"><h1>Découvrir...</h1></a>
+                </div>
+            </div>
+            <button class="next">&gt;</button>
+            <div class="indicators">
+                <span class="indicator" data-slide="0"></span>
+                <span class="indicator" data-slide="1"></span>
+                <span class="indicator" data-slide="2"></span>
+            </div>
+        </div>
+    </section>
+	
+	    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h1>CONTACT</h1>
+            <h1>Merci d'adresser vos demandes à :<BR>
+			contact@sizear-jeux.fr<BR><BR>
+			Je m'efforcerai d'y répondre le plus rapidement possible.</h1>
+        </div>
+    </div>
+	
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <a href="https://www.youtube.com/@Sizear-jeux" target="_blank">
+                    <img src="youtube.png" alt="YouTube" class="social-iconY">
+                </a>
+            </div>
+            <div class="footer-center">
+                <ul class="footer-links">
+                    <li><a href="legal.html">Mentions légales</a></li>
+                    <li><a href="#" id="openModal" >Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-right">
+                <a href="https://www.instagram.com/sizear_jeux/" target="_blank">
+                    <img src="insta.png" alt="Instagram" class="social-iconI">
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <i><h1>Sizear-Jeux, tous droits réservés</h1></i>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
